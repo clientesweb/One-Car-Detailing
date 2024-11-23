@@ -57,7 +57,7 @@ document.addEventListener('DOMContentLoaded', function() {
     serviceModal.className = 'fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 hidden';
     serviceModal.innerHTML = `
         <div class="bg-white p-8 rounded-lg max-w-md w-full relative">
-            <button id="closeModal" class="absolute top-2 right-2 text-gray-600 hover:text-gray-800 text-2xl" aria-label="Close modal">&times;</button>
+            <button id="closeModal" class="absolute top-2 right-2 text-gray-600 hover:text-gray-800 text-2xl" aria-label="Cerrar modal">&times;</button>
             <h2 id="modalTitle" class="text-2xl font-bold mb-4"></h2>
             <p id="modalDescription" class="mb-4"></p>
             <ul id="modalFeatures" class="list-disc pl-5 mb-4"></ul>
@@ -75,52 +75,52 @@ document.addEventListener('DOMContentLoaded', function() {
 
     const serviceDetails = {
         wash: {
-            title: "Premium Wash & Wax",
-            description: "Our Premium Wash & Wax service is designed to give your vehicle a showroom-quality finish.",
+            title: "Lavado y Encerado Premium",
+            description: "Nuestro servicio de Lavado y Encerado Premium está diseñado para dar a tu vehículo un acabado de calidad de exhibición.",
             features: [
-                "Thorough exterior wash",
-                "Clay bar treatment",
-                "High-quality wax application",
-                "Tire and rim cleaning",
-                "Interior vacuum and wipe-down"
+                "Lavado exterior minucioso",
+                "Tratamiento con arcilla",
+                "Aplicación de cera de alta calidad",
+                "Limpieza de llantas y rines",
+                "Aspirado interior y limpieza de superficies"
             ],
-            price: "From $49.99"
+            price: "Desde $499 MXN"
         },
         interior: {
-            title: "Interior Detailing",
-            description: "Our Interior Detailing service deep cleans and refreshes your vehicle's interior.",
+            title: "Detallado Interior",
+            description: "Nuestro servicio de Detallado Interior limpia profundamente y refresca el interior de tu vehículo.",
             features: [
-                "Thorough vacuuming",
-                "Steam cleaning of upholstery",
-                "Leather treatment (if applicable)",
-                "Dashboard and console cleaning",
-                "Window and mirror cleaning"
+                "Aspirado minucioso",
+                "Limpieza a vapor de tapicería",
+                "Tratamiento de cuero (si aplica)",
+                "Limpieza de tablero y consola",
+                "Limpieza de ventanas y espejos"
             ],
-            price: "From $89.99"
+            price: "Desde $899 MXN"
         },
         paint: {
-            title: "Paint Correction",
-            description: "Our Paint Correction service removes imperfections and restores your vehicle's paint to its original glory.",
+            title: "Corrección de Pintura",
+            description: "Nuestro servicio de Corrección de Pintura elimina imperfecciones y restaura la pintura de tu vehículo a su gloria original.",
             features: [
-                "Multi-stage polishing process",
-                "Swirl and scratch removal",
-                "Paint depth measurement",
-                "High-gloss finish",
-                "Protective sealant application"
+                "Proceso de pulido en múltiples etapas",
+                "Eliminación de remolinos y rayones",
+                "Medición de profundidad de pintura",
+                "Acabado de alto brillo",
+                "Aplicación de sellador protector"
             ],
-            price: "From $199.99"
+            price: "Desde $1,999 MXN"
         },
         ceramic: {
-            title: "Ceramic Coating",
-            description: "Our Ceramic Coating service provides long-lasting protection and an unmatched shine for your vehicle.",
+            title: "Recubrimiento Cerámico",
+            description: "Nuestro servicio de Recubrimiento Cerámico proporciona una protección duradera y un brillo inigualable para tu vehículo.",
             features: [
-                "Paint decontamination",
-                "Single-stage paint correction",
-                "Professional-grade ceramic coating application",
-                "Hydrophobic properties",
-                "UV protection"
+                "Descontaminación de pintura",
+                "Corrección de pintura de una etapa",
+                "Aplicación de recubrimiento cerámico profesional",
+                "Propiedades hidrofóbicas",
+                "Protección UV"
             ],
-            price: "From $299.99"
+            price: "Desde $2,999 MXN"
         }
     };
 
@@ -166,7 +166,7 @@ document.addEventListener('DOMContentLoaded', function() {
     galleryModal.className = 'fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 hidden';
     galleryModal.innerHTML = `
         <div class="bg-white p-8 rounded-lg max-w-4xl w-full relative">
-            <button id="closeGalleryModal" class="absolute top-2 right-2 text-gray-600 hover:text-gray-800 text-2xl" aria-label="Close gallery modal">&times;</button>
+            <button id="closeGalleryModal" class="absolute top-2 right-2 text-gray-600 hover:text-gray-800 text-2xl" aria-label="Cerrar galería modal">&times;</button>
             <h2 id="galleryModalTitle" class="text-2xl font-bold mb-4"></h2>
             <div id="galleryModalImages" class="swiper gallery-swiper mb-4">
                 <div class="swiper-wrapper"></div>
@@ -280,5 +280,5 @@ document.addEventListener('DOMContentLoaded', function() {
         once: true,
     });
 
-    console.log('Script loaded and running');
+    console.log('Script cargado y ejecutándose');
 });
