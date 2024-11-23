@@ -1,499 +1,936 @@
 <!DOCTYPE html>
-<html lang="es" class="scroll-smooth">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>One Car Detailing - La calidad nos distingue</title>
     
     <!-- SEO Meta Tags -->
-    <meta name="description" content="One Car Detailing ofrece servicios de detallado automotriz de alta calidad en Puebla. Nuestra atención al detalle y profesionalismo nos distinguen.">
-    <meta name="keywords" content="detallado automotriz, lavado de autos, Puebla, One Car Detailing, calidad">
+    <title>Loyal Mobile Detailing - Luxury Car Care at Your Doorstep</title>
+    <meta name="description" content="Experience the pinnacle of automotive care with our professional mobile detailing services in LA, OC, and IE. Luxury car detailing brought directly to you.">
+    <meta name="keywords" content="mobile detailing, car care, luxury detailing, Los Angeles, Orange County, Inland Empire, car wash, paint protection">
     
-    <!-- Open Graph / Facebook -->
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" sizes="32x32" href="https://loyalmobiledetailing.com/img/logo.png">
+    
+    <!-- Theme Colors -->
+    <meta name="theme-color" content="#1a202c">
+    <meta name="msapplication-TileColor" content="#1a202c">
+    
+    <!-- Open Graph / Social Media -->
     <meta property="og:type" content="website">
-    <meta property="og:url" content="https://onecardetailing.com/">
-    <meta property="og:title" content="One Car Detailing - La calidad nos distingue">
-    <meta property="og:description" content="Servicios de detallado automotriz profesional en Puebla. Expertos en cuidado y limpieza de vehículos.">
-    <meta property="og:image" content="https://onecardetailing.com/img/logo.png">
-
+    <meta property="og:url" content="https://loyalmobiledetailing.com/">
+    <meta property="og:title" content="Loyal Mobile Detailing - Luxury Car Care at Your Doorstep">
+    <meta property="og:description" content="Experience the pinnacle of automotive care with our professional mobile detailing services in LA, OC, and IE.">
+    <meta property="og:image" content="https://loyalmobiledetailing.com/img/logo.png">
+    
     <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image">
-    <meta property="twitter:url" content="https://onecardetailing.com/">
-    <meta property="twitter:title" content="One Car Detailing - La calidad nos distingue">
-    <meta property="twitter:description" content="Servicios de detallado automotriz profesional en Puebla. Expertos en cuidado y limpieza de vehículos.">
-    <meta property="twitter:image" content="https://onecardetailing.com/img/logo.png">
+    <meta property="twitter:url" content="https://loyalmobiledetailing.com/">
+    <meta property="twitter:title" content="Loyal Mobile Detailing - Luxury Car Care at Your Doorstep">
+    <meta property="twitter:description" content="Luxury car detailing at your convenience in Los Angeles, Orange County, and Inland Empire.">
+    <meta property="twitter:image" content="https://loyalmobiledetailing.com/img/logo.png">
 
-    <!-- Favicon -->
-    <link rel="icon" type="image/png" sizes="32x32" href="img/logo.png">
-
+    <!-- Styles -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <script src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js" defer></script>
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    colors: {
-                        'gray-gradient-start': '#333333',
-                        'gray-gradient-end': '#666666',
-                    }
-                }
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.css" />
+    <script src="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.js"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    
+    <style>
+        :root {
+            --primary-color: #1a202c;
+            --secondary-color: #ecc94b;
+        }
+        
+        .gradient-bg {
+            background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
+        }
+        
+        .app-gradient-bg {
+            background: linear-gradient(135deg, #ecc94b, #1a202c);
+        }
+        
+        html, body {
+            overflow-x: hidden;
+        }
+        
+        body {
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200' viewBox='0 0 200 200'%3E%3Cpath d='M0 0h200v200H0z' fill='%23f7fafc'/%3E%3Cg fill='%231a202c' fill-opacity='0.05'%3E%3Cpath d='M100 0c11 0 20 9 20 20s-9 20-20 20-20-9-20-20 9-20 20-20zM0 100c11 0 20 9 20 20s-9 20-20 20v-40zM200 100c-11 0-20 9-20 20s9 20 20 20v-40zM100 200c-11 0-20-9-20-20s9-20 20-20 20 9 20 20-9 20-20 20z'/%3E%3C/g%3E%3C/svg%3E");
+            background-attachment: fixed;
+        }
+        
+        #top-banner {
+            background: var(--primary-color);
+            overflow: hidden;
+        }
+
+        #top-banner .banner-content {
+            display: flex;
+            transition: transform 0.5s ease;
+        }
+
+        #top-banner .banner-item {
+            flex: 0 0 100%;
+        }
+
+        .bg-white {
+            background-color: #fff;
+        }
+
+        .text-primary-color {
+            color: var(--primary-color);
+        }
+        
+        .bottom-menu {
+            background: var(--primary-color);
+            box-shadow: 0 -2px 10px rgba(0,0,0,0.1);
+            margin-bottom: env(safe-area-inset-bottom);
+        }
+        
+        .instagram-container {
+            overflow-x: auto;
+            -webkit-overflow-scrolling: touch;
+            scrollbar-width: none;
+            -ms-overflow-style: none;
+        }
+        
+        .instagram-container::-webkit-scrollbar {
+            display: none;
+        }
+        
+       
+
+/* Tarjetas de Servicio */
+.service-card {
+    position: relative;
+    background-size: cover;
+    background-position: center;
+    color: white;
+    border-radius: 12px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s;
+    z-index: 2; /* Asegura que el contenido de la tarjeta esté por encima de la capa de opacidad */
+}
+
+/* Capa de opacidad */
+.service-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.4); /* Ajusta la opacidad */
+    border-radius: 12px; /* Mantener las esquinas redondeadas */
+    z-index: 1; /* Coloca la capa debajo del contenido */
+}
+
+/* Efecto Hover para las Tarjetas */
+.service-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.3);
+}
+
+/* Botones con Gradiente */
+.gradient-bg {
+    background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+}
+
+/* Botones de las Tarjetas */
+.service-card button {
+    position: relative; /* Asegura que el botón esté por encima de la capa de opacidad */
+    z-index: 3; /* Para que el botón quede encima de la capa de opacidad */
+    transition: background-color 0.3s ease-in-out, transform 0.3s ease-in-out;
+    padding: 0.5rem 1rem;
+    border-radius: 30px;
+    background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
+    border: none;
+    color: white;
+    cursor: pointer;
+}
+
+/* Efecto Hover para Botones */
+.service-card button:hover {
+    transform: scale(1.05);
+    background: linear-gradient(135deg, var(--secondary-color), var(--primary-color));
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* Título y Descripción */
+.service-card h2, .service-card h3, .service-card p {
+    position: relative;
+    z-index: 2; /* Asegura que el texto (título y descripción) esté por encima de la capa de opacidad */
+}
+
+/* Título con color primario */
+h2.text-primary-color {
+    color: var(--primary-color);
+}
+
+h3 {
+    color: var(--secondary-color);
+}
+
+/* Responsividad */
+@media (max-width: 768px) {
+    .service-card {
+        padding: 20px;
+        text-align: center;
+    }
+    
+    .service-card button {
+        width: 100%;
+    }
+}
+        
+        .testimonials-auto-scroll {
+            animation: scroll-left 30s linear infinite;
+        }
+        
+        @keyframes scroll-left {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-100%); }
+        }
+        
+        .footer-spacing {
+            padding-bottom: calc(4rem + env(safe-area-inset-bottom));
+        }
+        
+        .filter-container {
+    display: flex;
+    flex-wrap: wrap; /* Permite que los botones se ajusten automáticamente */
+    justify-content: center;
+    margin-bottom: 2rem;
+    padding-bottom: 1rem;
+    gap: 0.75rem; /* Espacio entre los botones */
+}
+
+.filter-btn {
+    background-color: #f3f4f6;
+    color: #4b5563;
+    font-weight: 600;
+    padding: 0.5rem 1rem;
+    border-radius: 9999px;
+    transition: all 0.3s ease;
+    white-space: nowrap;
+    min-width: 120px; /* Ancho mínimo de cada botón para mejor apariencia */
+    text-align: center; /* Centra el texto en los botones */
+}
+
+.filter-btn:hover,
+.filter-btn:focus {
+    background-color: #e5e7eb;
+    color: #1f2937;
+}
+
+.filter-btn.active {
+    background-color: var(--primary-color);
+    color: white;
+}
+
+@media (max-width: 768px) {
+    .filter-btn {
+        min-width: 100px; /* Ajuste en pantallas más pequeñas */
+    }
+}
+
+@media (max-width: 480px) {
+    .filter-btn {
+        min-width: 80px; /* Aún más ajustado en pantallas muy pequeñas */
+    }
+}
+.gallery-item {
+    animation: fadeIn 0.5s ease-out;
+    transition: transform 0.3s ease; /* Agregar transición para el hover */
+}
+
+.gallery-item:hover {
+    transform: scale(1.05); /* Sutil zoom en hover */
+}
+
+.gallery-item img {
+    border-radius: 12px; /* Esquinas más redondeadas */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); /* Sombra más suave */
+}
+
+@media (max-width: 640px) {
+    .filter-container {
+        justify-content: flex-start;
+    }
+}
+
+@media (max-width: 1024px) {
+    .gallery-item {
+        flex: 1 0 calc(33.33% - 1.5rem); /* Mejorar en pantallas medianas */
+    }
+}
+
+        /* Estilos para el preloader */
+        .preloader {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: #ffffff;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+        }
+
+        .preloader-logo {
+            width: 150px;
+            height: auto;
+            animation: pulse 1.5s infinite;
+        }
+
+        .preloader-text {
+            margin-top: 20px;
+            font-size: 18px;
+            color: #1a202c;
+            animation: pulse 1.5s infinite;
+        }
+
+        @keyframes pulse {
+            0% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.1);
+            }
+            100% {
+                transform: scale(1);
             }
         }
-    </script>
-    <style>
-        @keyframes pulse {
-            0%, 100% { transform: scale(1); }
-            50% { transform: scale(1.1); }
+
+        /* Estilos para botones flotantes */
+        .floating-btn {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            z-index: 100;
+            border-radius: 50%;
+            width: 60px;
+            height: 60px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
         }
-        .animate-pulse {
-            animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+
+        .floating-btn:hover {
+            transform: scale(1.1);
         }
-        .fade-in {
-            opacity: 0;
-            transform: translateY(20px);
-            transition: opacity 0.5s ease-out, transform 0.5s ease-out;
+
+        .floating-btn.whatsapp {
+            background-color: #25D366;
+            bottom: 90px;
         }
-        .fade-in.appear {
-            opacity: 1;
-            transform: translateY(0);
+
+        .floating-btn.book-now {
+            background-color: var(--primary-color);
+        }
+
+        /* Estilos para el modal de reserva */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0,0,0,0.4);
+        }
+
+        .modal-content {
+            background-color: #fefefe;
+            margin: 15% auto;
+            padding: 20px;
+            border: 1px solid #888;
+            width: 80%;
+            max-width: 500px;
+            border-radius: 10px;
+        }
+
+        .close {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+        }
+
+        .close:hover,
+        .close:focus {
+            color: black;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        /* Estilos para el banner publicitario */
+        .ad-banner {
+            background-color: var(--secondary-color);
+            padding: 2rem 0;
+        }
+
+        .ad-banner-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .ad-banner-image {
+            width: 50%;
+            height: 300px;
+            object-fit: cover;
+            border-radius: 10px;
+        }
+
+        .ad-banner-text {
+            width: 45%;
+        }
+
+        /* Estilos para FAQs */
+        .faq-item {
+            border-bottom: 1px solid #e2e8f0;
+            padding: 1rem 0;
+        }
+
+        .faq-question {
+            font-weight: bold;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .faq-answer {
+            margin-top: 1rem;
+            display: none;
+        }
+
+        .faq-answer.active {
+            display: block;
         }
     </style>
 </head>
-<body class="bg-black text-white font-sans" x-data="{ mobileMenu: false, currentSlide: 0, modalOpen: false, selectedImage: '', loading: false, currentBanner: 0 }">
+<body class="font-sans">
     <!-- Preloader -->
-    <div x-show="loading" class="fixed inset-0 z-50 flex items-center justify-center bg-black">
-        <div class="text-center">
-            <img src="img/logo.png" alt="One Car Detailing Logo" class="w-32 h-32 mx-auto mb-4 animate-pulse">
-            <div class="w-16 h-16 border-t-4 border-blue-500 border-solid rounded-full animate-spin mx-auto"></div>
+<div class="preloader">
+    <img src="img/logo.png" alt="Loyal Mobile Detailing Logo" class="preloader-logo">
+    <div class="preloader-text">Powered by Duality Domain</div>
+</div>
+
+    <!-- Top Banner with CTAs -->
+<div id="top-banner" class="py-2 text-white relative bg-primary-color">
+    <div class="banner-content flex">
+        <div class="banner-item flex items-center justify-center w-full">
+            <span class="mr-4">🎉 15% off on your first detail service!</span>
+            <a href="#services" class="bg-white text-primary-color px-4 py-2 rounded-full text-sm font-bold hover:bg-opacity-90 transition-all shadow-md hover:shadow-lg">View Offers</a>
+        </div>
+        <div class="banner-item flex items-center justify-center w-full">
+            <span class="mr-4">🌟 Luxury mobile detailing across LA, OC & IE</span>
+            <a href="#services" class="bg-white text-primary-color px-4 py-2 rounded-full text-sm font-bold hover:bg-opacity-90 transition-all shadow-md hover:shadow-lg">Learn More</a>
+        </div>
+        <div class="banner-item flex items-center justify-center w-full">
+            <span class="mr-4">🚗 Schedule your detail today for a showroom shine</span>
+            <a href="#contact" class="bg-white text-primary-color px-4 py-2 rounded-full text-sm font-bold hover:bg-opacity-90 transition-all shadow-md hover:shadow-lg">Book Now</a>
         </div>
     </div>
+</div>
 
-    <!-- Top Banner -->
-    <div class="bg-gradient-to-r from-gray-gradient-start to-gray-gradient-end text-white py-2 px-4 relative overflow-hidden">
-        <div class="flex transition-transform duration-500 ease-in-out max-w-4xl mx-auto" x-data="{ currentBanner: 0 }" x-init="setInterval(() => currentBanner = (currentBanner + 1) % 3, 5000)" :style="{ transform: `translateX(-${currentBanner * 100}%)` }">
-            <p class="text-sm w-full flex-shrink-0">
-                🎉 20% de descuento en todos los servicios esta semana! <a href="#contact" class="underline">Reserva ahora</a>
-            </p>
-            <p class="text-sm w-full flex-shrink-0">
-                🚗 Nuevo servicio de encerado cerámico disponible!
-            </p>
-            <p class="text-sm w-full flex-shrink-0">
-                💼 Bienvenidas las cuentas corporativas!
-            </p>
-        </div>
-        <div class="absolute right-4 top-1/2 transform -translate-y-1/2 space-x-2 z-10">
-            <a href="#" class="text-white hover:text-gray-200"><i class="fab fa-facebook"></i></a>
-            <a href="#" class="text-white hover:text-gray-200"><i class="fab fa-instagram"></i></a>
-            <a href="#" class="text-white hover:text-gray-200"><i class="fab fa-twitter"></i></a>
-        </div>
-    </div>
-
-    <!-- Header with Responsive Navigation -->
-    <header class="bg-black bg-opacity-90 backdrop-blur-md fixed w-full z-40">
-        <nav class="container mx-auto px-4 py-3" x-data="{ open: false }">
-            <div class="flex justify-between items-center">
-                <a href="#" class="flex items-center">
-                    <img src="img/logo.png" alt="One Car Detailing Logo" class="h-12 w-auto">
+   <!-- Header -->
+<header class="sticky top-0 gradient-bg bg-opacity-90 backdrop-blur-md z-40">
+    <nav class="container mx-auto px-4 py-3">
+        <div class="flex justify-between items-center">
+            <a href="#" class="flex items-center">
+                <img src="img/logo.png" alt="Loyal Mobile Detailing Logo" class="h-16 w-auto">
+            </a>
+            <div class="hidden md:flex space-x-4">
+                <a href="#about" class="text-white hover:text-secondary-color transition">About</a>
+                <a href="#services" class="text-white hover:text-secondary-color transition">Services</a>
+                <a href="#gallery" class="text-white hover:text-secondary-color transition">Gallery</a>
+                <a href="#testimonials" class="text-white hover:text-secondary-color transition">Testimonials</a>
+                <a href="#contact" class="text-white hover:text-secondary-color transition">Contact</a>
+            </div>
+            <div class="flex items-center space-x-4">
+                <a href="https://www.facebook.com/loyalmobiledetailing" target="_blank" class="text-white hover:text-secondary-color transition">
+                    <i class="fab fa-facebook-f"></i>
                 </a>
-                <button @click="open = !open" class="md:hidden text-white focus:outline-none">
-                    <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
-                    </svg>
+                <a href="https://www.instagram.com/loyalmobiledetailing" target="_blank" class="text-white hover:text-secondary-color transition">
+                    <i class="fab fa-instagram"></i>
+                </a>
+                <a href="https://twitter.com/loyaldetailing" target="_blank" class="text-white hover:text-secondary-color transition">
+                    <i class="fab fa-twitter"></i>
+                </a>
+                <button id="mobileMenuBtn" class="md:hidden text-white">
+                    <i class="fas fa-bars"></i>
                 </button>
-                <div class="hidden md:flex space-x-4">
-                    <a href="#about" class="hover:text-gray-300 transition">Nosotros</a>
-                    <a href="#services" class="hover:text-gray-300 transition">Servicios</a>
-                    <a href="#gallery" class="hover:text-gray-300 transition">Galería</a>
-                    <a href="#testimonials" class="hover:text-gray-300 transition">Testimonios</a>
-                    <a href="#faq" class="hover:text-gray-300 transition">FAQ</a>
-                    <a href="#contact" class="hover:text-gray-300 transition">Contacto</a>
-                </div>
             </div>
-            <div x-show="open" class="md:hidden mt-3 space-y-2">
-                <a href="#about" class="block hover:text-gray-300 transition">Nosotros</a>
-                <a href="#services" class="block hover:text-gray-300 transition">Servicios</a>
-                <a href="#gallery" class="block hover:text-gray-300 transition">Galería</a>
-                <a href="#testimonials" class="block hover:text-gray-300 transition">Testimonios</a>
-                <a href="#faq" class="block hover:text-gray-300 transition">FAQ</a>
-                <a href="#contact" class="block hover:text-gray-300 transition">Contacto</a>
-            </div>
-        </nav>
-    </header>
+        </div>
+    </nav>
+</header>
+
+    <!-- Mobile Menu -->
+    <div id="mobileMenu" class="fixed inset-0 gradient-bg bg-opacity-95 z-50 hidden">
+        <div class="flex flex-col items-center justify-center h-full">
+            <a href="#about" class="text-white text-xl mb-4">About</a>
+            <a href="#services" class="text-white text-xl mb-4">Services</a>
+            <a href="#gallery" class="text-white text-xl mb-4">Gallery</a>
+            <a href="#testimonials" class="text-white text-xl mb-4">Testimonials</a>
+            <a href="#contact" class="text-white text-xl mb-4">Contact</a>
+            <button id="closeMobileMenu" class="text-white mt-8">
+                <i class="fas fa-times text-2xl"></i>
+            </button>
+        </div>
+    </div>
 
     <main>
-        <!-- Hero Section with Automatic Slider -->
-        <section id="hero" class="h-screen flex items-center justify-center relative overflow-hidden" x-data="{ currentSlide: 0 }" x-init="setInterval(() => currentSlide = (currentSlide + 1) % 3, 5000)">
-            <div class="absolute inset-0 z-0">
-                <div x-show="currentSlide === 0" x-transition:enter="transition ease-out duration-1000" x-transition:enter-start="opacity-0 transform translate-x-full" x-transition:enter-end="opacity-100 transform translate-x-0" x-transition:leave="transition ease-in duration-1000" x-transition:leave-start="opacity-100 transform translate-x-0" x-transition:leave-end="opacity-0 transform -translate-x-full" class="absolute inset-0 bg-cover bg-center" style="background-image: url('https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80');"></div>
-                <div x-show="currentSlide === 1" x-transition:enter="transition ease-out duration-1000" x-transition:enter-start="opacity-0 transform translate-x-full" x-transition:enter-end="opacity-100 transform translate-x-0" x-transition:leave="transition ease-in duration-1000" x-transition:leave-start="opacity-100 transform translate-x-0" x-transition:leave-end="opacity-0 transform -translate-x-full" class="absolute inset-0 bg-cover bg-center" style="background-image: url('https://images.unsplash.com/photo-1503376780353-7e6692767b70?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80');"></div>
-                <div x-show="currentSlide === 2" x-transition:enter="transition ease-out duration-1000" x-transition:enter-start="opacity-0 transform translate-x-full" x-transition:enter-end="opacity-100 transform translate-x-0" x-transition:leave="transition ease-in duration-1000" x-transition:leave-start="opacity-100 transform translate-x-0" x-transition:leave-end="opacity-0 transform -translate-x-full" class="absolute inset-0 bg-cover bg-center" style="background-image: url('https://images.unsplash.com/photo-1549317661-bd32c8ce0db2?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80');"></div>
-            </div>
-            <div class="text-center z-10 bg-black bg-opacity-50 p-8 rounded-lg max-w-3xl mx-auto">
-                <h1 class="text-4xl md:text-6xl lg:text-7xl font-bold mb-4">One Car Detailing</h1>
-                <h2 class="text-2xl md:text-3xl lg:text-4xl font-semibold mb-4">La calidad nos distingue</h2>
-                <p class="text-lg md:text-xl mb-8">No nos conformamos con lavados ordinarios. En One Car Detailing, nos especializamos en detallado de precisión para lograr resultados impecables y dignos de exhibición.</p>
-                <div class="space-x-4">
-                    <a href="#services" class="bg-white text-black px-6 py-2 md:px-8 md:py-3 rounded-full hover:bg-gray-200 transition text-sm md:text-base">Nuestros Servicios</a>
-                    <a href="#contact" class="bg-transparent border-2 border-white text-white px-6 py-2 md:px-8 md:py-3 rounded-full hover:bg-white hover:text-black transition text-sm md:text-base">Contáctanos</a>
-                </div>
-            </div>
-        </section>
+        <!-- Hero Section with Instagram Reel Video -->
+<section id="hero" class="relative h-screen">
+    <div class="absolute inset-0 bg-black bg-opacity-50 z-10"></div>
+    <video class="w-full h-full object-cover" autoplay loop muted playsinline>
+        <source src="video.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+    </video>
+    <div class="absolute inset-0 flex items-center justify-center z-20">
+        <div class="text-center">
+            <h1 class="text-4xl md:text-6xl font-bold mb-4 text-white">Luxury Car Care at Your Doorstep</h1>
+            <p class="text-xl md:text-2xl mb-8 text-white">Experience premium mobile detailing in LA, OC, and IE.</p>
+            <a href="#services" class="bg-primary-color text-white px-6 py-2 rounded-full hover:bg-opacity-90 transition shadow-lg">Our Services</a>
+        </div>
+    </div>
+</section>
 
-        <!-- About Us Section -->
-        <section id="about" class="py-16 md:py-20 bg-gradient-to-b from-gray-gradient-start to-gray-gradient-end">
-            <div class="container mx-auto px-4">
-                <h2 class="text-2xl md:text-3xl font-bold mb-8 md:mb-12 text-center fade-in">Sobre Nosotros</h2>
-                <div class="flex overflow-x-auto space-x-6 pb-4 fade-in">
-                    <div class="flex-shrink-0 w-64 md:w-80">
-                        <img src="/placeholder.svg" alt="Nuestro Inicio" class="w-full h-48 object-cover rounded-lg mb-4">
-                        <h3 class="text-lg font-semibold mb-2">Nuestro Inicio</h3>
-                        <p class="text-sm">Fundados con pasión por los autos y el sueño de ofrecer servicios de detallado de primera clase.</p>
+        <!-- About Section -->
+<section id="about" class="py-16 bg-gray-100">
+    <div class="container mx-auto px-4">
+        <h2 class="text-3xl font-bold mb-8 text-center text-primary-color" data-aos="fade-up">About Us</h2>
+        <div class="flex flex-col items-center">
+            <div class="w-full max-w-3xl mb-8" data-aos="fade-up" data-aos-delay="200">
+                <p class="text-lg mb-4 text-center">Loyal Mobile Detailing brings luxury car care directly to your doorstep in Los Angeles, Orange County, and the Inland Empire. We are dedicated to delivering exceptional mobile detailing services that redefine convenience and quality.</p>
+                <p class="text-lg mb-4 text-center">With years of expertise, our skilled professionals use cutting-edge techniques and premium products to ensure your vehicle looks its absolute best, all without you ever leaving home.</p>
+            </div>
+            <div class="w-full max-w-6xl flex justify-center" data-aos="fade-up" data-aos-delay="400">
+                <div class="relative w-full max-w-5xl aspect-[16/9]">
+                    <!-- Main image (left) -->
+                    <div class="absolute left-0 top-0 w-[58%] h-full">
+                        <img 
+                            src="img/about.png"
+                            alt="Professional detailer polishing a car" 
+                            class="w-full h-full object-cover rounded-lg"
+                        />
                     </div>
-                    <div class="flex-shrink-0 w-64 md:w-80">
-                        <img src="/placeholder.svg" alt="Años de Crecimiento" class="w-full h-48 object-cover rounded-lg mb-4">
-                        <h3 class="text-lg font-semibold mb-2">Años de Crecimiento</h3>
-                        <p class="text-sm">Expandimos nuestros servicios y equipo para satisfacer la creciente demanda de detallado de calidad.</p>
-                    </div>
-                    <div class="flex-shrink-0 w-64 md:w-80">
-                        <img src="/placeholder.svg" alt="Hoy" class="w-full h-48 object-cover rounded-lg mb-4">
-                        <h3 class="text-lg font-semibold mb-2">Hoy</h3>
-                        <p class="text-sm">Ahora atendemos a toda Puebla con una reputación de excelencia y satisfacción del cliente.</p>
+                    <!-- Overlapping image (right) -->
+                    <div class="absolute right-0 bottom-0 w-[50%] h-[85%]">
+                        <img 
+                            src="img/about1.png"
+                            alt="Luxury car leather interior detail" 
+                            class="w-full h-full object-cover rounded-lg"
+                        />
                     </div>
                 </div>
             </div>
-        </section>
+        </div>
+    </div>
+</section>
 
-        <!-- Services Section -->
-        <section id="services" class="py-16 md:py-20 bg-black">
-            <div class="container mx-auto px-4">
-                <h2 class="text-2xl md:text-3xl font-bold mb-8 md:mb-12 text-center fade-in">Nuestros Servicios</h2>
-                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8">
-                    <div class="bg-white bg-opacity-10 p-6 rounded-lg shadow-lg hover:shadow-xl transition text-center fade-in">
-                        <i class="fas fa-car-alt text-3xl md:text-4xl text-white mb-4"></i>
-                        <h3 class="text-lg md:text-
-xl font-semibold mb-4">Detallado Exterior</h3>
-                        <p class="mb-4 text-sm md:text-base">Restauramos el exterior de tu auto para un brillo de sala de exhibición con nuestras técnicas expertas.</p>
-                        <a href="#" class="text-white hover:underline text-sm md:text-base">Más Información</a>
-                    </div>
-                    <div class="bg-white bg-opacity-10 p-6 rounded-lg shadow-lg hover:shadow-xl transition text-center fade-in">
-                        <i class="fas fa-couch text-3xl md:text-4xl text-white mb-4"></i>
-                        <h3 class="text-lg md:text-xl font-semibold mb-4">Detallado Interior</h3>
-                        <p class="mb-4 text-sm md:text-base">Revitaliza el interior de tu vehículo con nuestro meticuloso proceso de limpieza.</p>
-                        <a href="#" class="text-white hover:underline text-sm md:text-base">Más Información</a>
-                    </div>
-                    <div class="bg-white bg-opacity-10 p-6  rounded-lg shadow-lg hover:shadow-xl transition text-center fade-in">
-                        <i class="fas fa-spray-can text-3xl md:text-4xl text-white mb-4"></i>
-                        <h3 class="text-lg md:text-xl font-semibold mb-4">Encerado Cerámico</h3>
-                        <p class="mb-4 text-sm md:text-base">Protege la pintura de tu vehículo con nuestro servicio de encerado cerámico de larga duración.</p>
-                        <a href="#" class="text-white hover:underline text-sm md:text-base">Más Información</a>
-                    </div>
-                    <div class="bg-white bg-opacity-10 p-6 rounded-lg shadow-lg hover:shadow-xl transition text-center fade-in">
-                        <i class="fas fa-magic text-3xl md:text-4xl text-white mb-4"></i>
-                        <h3 class="text-lg md:text-xl font-semibold mb-4">Corrección de Pintura</h3>
-                        <p class="mb-4 text-sm md:text-base">Eliminamos remolinos, rayones e imperfecciones para un acabado impecable.</p>
-                        <a href="#" class="text-white hover:underline text-sm md:text-base">Más Información</a>
-                    </div>
-                </div>
-            </div>
-        </section>
+        <!-- Services Section with Full-Width Cards -->
+<section id="services" class="py-16 bg-white">
+    <div class="container mx-auto px-4">
+        <h2 class="text-3xl font-bold mb-8 text-center text-primary-color" data-aos="fade-up">Our Services</h2>
+        
+        <!-- Service 1: Premium Wash & Wax -->
+        <div class="service-card bg-cover bg-center text-white py-24 px-8 mb-6 rounded-lg shadow-lg" style="background-image: url('img/service1.jpg');" data-aos="fade-right">
+            <h3 class="text-3xl font-bold mb-2">Premium Wash & Wax</h3>
+            <p class="mb-4">Complete wash and wax service that leaves your vehicle shining.</p>
+            <button class="modal-trigger view-service gradient-bg text-white px-4 py-2 rounded-full hover:opacity-90 transition" data-service="wash">
+                View Details
+            </button>
+        </div>
+        
+        <!-- Service 2: Interior Detailing -->
+        <div class="service-card bg-cover bg-center text-white py-24 px-8 mb-6 rounded-lg shadow-lg" style="background-image: url('img/service2.jpg');" data-aos="fade-left">
+            <h3 class="text-3xl font-bold mb-2">Interior Detailing</h3>
+            <p class="mb-4">Deep cleaning and restoration of your vehicle's interior.</p>
+            <button class="modal-trigger view-service gradient-bg text-white px-4 py-2 rounded-full hover:opacity-90 transition" data-service="interior">
+                View Details
+            </button>
+        </div>
+        
+        <!-- Service 3: Paint Correction -->
+        <div class="service-card bg-cover bg-center text-white py-24 px-8 mb-6 rounded-lg shadow-lg" style="background-image: url('img/service3.jpg');" data-aos="fade-right">
+            <h3 class="text-3xl font-bold mb-2">Paint Correction</h3>
+            <p class="mb-4">Removal of scratches and restoration of original shine.</p>
+            <button class="modal-trigger view-service gradient-bg text-white px-4 py-2 rounded-full hover:opacity-90 transition" data-service="paint">
+                View Details
+            </button>
+        </div>
+        
+        <!-- Service 4: Ceramic Coating -->
+        <div class="service-card bg-cover bg-center text-white py-24 px-8 mb-6 rounded-lg shadow-lg" style="background-image: url('img/service4.jpg');" data-aos="fade-left">
+            <h3 class="text-3xl font-bold mb-2">Ceramic Coating</h3>
+            <p class="mb-4">Long-lasting ceramic coating for ultimate paint protection.</p>
+            <button class="modal-trigger view-service gradient-bg text-white px-4 py-2 rounded-full hover:opacity-90 transition" data-service="ceramic">
+                View Details
+            </button>
+        </div>
+    </div>
+</section>
 
-        <!-- Gallery Section with Filter and Modal -->
-        <section id="gallery" class="py-16 md:py-20 bg-gradient-to-b from-gray-gradient-start to-gray-gradient-end" x-data="{ activeFilter: 'all' }">
+        <!-- Gallery Section with Enhanced Details -->
+        <section id="gallery" class="py-16 bg-gray-100">
             <div class="container mx-auto px-4">
-                <h2 class="text-2xl md:text-3xl font-bold mb-8 md:mb-12 text-center fade-in">Nuestro Trabajo</h2>
-                <div class="flex flex-wrap justify-center space-x-2 md:space-x-4 mb-6 md:mb-8 fade-in">
-                    <button @click="activeFilter = 'all'" 
-                            :class="{ 'bg-white text-black': activeFilter === 'all' }"
-                            class="px-3 py-1 md:px-4 md:py-2 rounded-full bg-gray-800 hover:bg-white hover:text-black transition mb-2 text-sm md:text-base">Todos</button>
-                    <button @click="activeFilter = 'exterior'"
-                            :class="{ 'bg-white text-black': activeFilter === 'exterior' }"
-                            class="px-3 py-1 md:px-4 md:py-2 rounded-full bg-gray-800 hover:bg-white hover:text-black transition mb-2 text-sm md:text-base">Exterior</button>
-                    <button @click="activeFilter = 'interior'"
-                            :class="{ 'bg-white text-black': activeFilter === 'interior' }"
-                            class="px-3 py-1 md:px-4 md:py-2 rounded-full bg-gray-800 hover:bg-white hover:text-black transition mb-2 text-sm md:text-base">Interior</button>
-                    <button @click="activeFilter = 'ceramic'"
-                            :class="{ 'bg-white text-black': activeFilter === 'ceramic' }"
-                            class="px-3 py-1 md:px-4 md:py-2 rounded-full bg-gray-800 hover:bg-white hover:text-black transition mb-2 text-sm md:text-base">Encerado Cerámico</button>
+                <h2 class="text-3xl font-bold mb-8 text-center text-primary-color" data-aos="fade-up">Our Gallery</h2>
+                
+                <!-- Filter buttons container -->
+                <div class="filter-container">
+                    <button class="filter-btn active" data-filter="all">All</button>
+                    <button class="filter-btn" data-filter="wash">Wash</button>
+                    <button class="filter-btn" data-filter="interior">Interior</button>
+                    <button class="filter-btn" data-filter="paint">Paint</button>
+                    <button class="filter-btn" data-filter="ceramic">Ceramic</button>
                 </div>
-                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-                    <div x-show="activeFilter === 'all' || activeFilter === 'exterior'"
-                         class="bg-gray-800 h-48 md:h-64 rounded-lg overflow-hidden cursor-pointer fade-in"
-                         @click="modalOpen = true; selectedImage = 'https://images.unsplash.com/photo-1605559424843-9e4c228bf1c2?ixlib=rb-1.2.1&auto=format&fit=crop&w=1000&q=80'">
-                        <img src="https://images.unsplash.com/photo-1605559424843-9e4c228bf1c2?ixlib=rb-1.2.1&auto=format&fit=crop&w=1000&q=80"
-                             alt="Detallado Exterior"
-                             class="w-full h-full object-cover">
-                    </div>
-                    <div x-show="activeFilter === 'all' || activeFilter === 'interior'"
-                         class="bg-gray-800 h-48 md:h-64 rounded-lg overflow-hidden cursor-pointer fade-in"
-                         @click="modalOpen = true; selectedImage = 'https://images.unsplash.com/photo-1601362840469-51e4d8d58785?ixlib=rb-1.2.1&auto=format&fit=crop&w=1000&q=80'">
-                        <img src="https://images.unsplash.com/photo-1601362840469-51e4d8d58785?ixlib=rb-1.2.1&auto=format&fit=crop&w=1000&q=80"
-                             alt="Detallado Interior"
-                             class="w-full h-full object-cover">
-                    </div>
-                    <div x-show="activeFilter === 'all' || activeFilter === 'ceramic'"
-                         class="bg-gray-800 h-48 md:h-64 rounded-lg overflow-hidden cursor-pointer fade-in"
-                         @click="modalOpen = true; selectedImage = 'https://images.unsplash.com/photo-1619642751034-765dfdf7c58e?ixlib=rb-1.2.1&auto=format&fit=crop&w=1000&q=80'">
-                        <img src="https://images.unsplash.com/photo-1619642751034-765dfdf7c58e?ixlib=rb-1.2.1&auto=format&fit=crop&w=1000&q=80"
-                             alt="Encerado Cerámico"
-                             class="w-full h-full object-cover">
-                    </div>
-                    <!-- Add more gallery items here -->
-                </div>
-            </div>
-            <!-- Modal -->
-            <div x-show="modalOpen" class="fixed inset-0 z-50 overflow-y-auto" aria-labelledby="modal-title" role="dialog" aria-modal="true">
-                <div class="flex items-end justify-center min-h-screen pt-4 px-4 pb-20 text-center sm:block sm:p-0">
-                    <div x-show="modalOpen" x-transition:enter="ease-out duration-300" x-transition:enter-start="opacity-0" x-transition:enter-end="opacity-100" x-transition:leave="ease-in duration-200" x-transition:leave-start="opacity-100" x-transition:leave-end="opacity-0" class="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity" aria-hidden="true"></div>
-                    <span class="hidden sm:inline-block sm:align-middle sm:h-screen" aria-hidden="true">&#8203;</span>
-                    <div x-show="modalOpen" x-transition:enter="ease-out duration-300" x-transition:enter-start="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95" x-transition:enter-end="opacity-100 translate-y-0 sm:scale-100" x-transition:leave="ease-in duration-200" x-transition:leave-start="opacity-100 translate-y-0 sm:scale-100" x-transition:leave-end="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95" class="inline-block align-bottom bg-white rounded-lg text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-lg sm:w-full">
-                        <div class="bg-white px-4 pt-5 pb-4 sm:p-6 sm:pb-4">
-                            <div class="sm:flex sm:items-start">
-                                <div class="mt-3 text-center sm:mt-0 sm:ml-4 sm:text-left">
-                                    <h3 class="text-lg leading-6 font-medium text-gray-900" id="modal-title">
-                                        Vista Previa de Imagen
-                                    </h3>
-                                    <div class="mt-2">
-                                        <img :src="selectedImage" alt="Trabajo seleccionado" class="w-full h-auto">
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="bg-gray-50 px-4 py-3 sm:px-6 sm:flex sm:flex-row-reverse">
-                            <button type="button" class="mt-3 w-full inline-flex justify-center rounded-md border border-gray-300 shadow-sm px-4 py-2 bg-white text-base font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 sm:mt-0 sm:ml-3 sm:w-auto sm:text-sm" @click="modalOpen = false">
-                                Cerrar
-                            </button>
+
+                <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+                    <!-- Gallery Item -->
+                    <div class="gallery-item" data-category="wash" data-images='[
+                        "https://images.unsplash.com/photo-1605618313023-d810c2b49e32?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80",
+                        "https://images.unsplash.com/photo-1600880292203-757bb62b4baf?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80",
+                        "https://images.unsplash.com/photo-1607860108855-64acf2078ed9?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80"
+                    ]' data-description="Complete wash and wax process for a 2023 BMW M3. Includes deep cleaning, minor paint correction, and protective waxing.">
+                        <img src="img/1.png" alt="BMW M3 Wash" class="w-full h-64 object-cover rounded-lg shadow-md cursor-pointer">
+                        <div class="p-4">
+                            <h3 class="font-semibold mb-2">BMW M3 Full Detail</h3>
+                            <p class="text-sm text-gray-600 mb-4">Premium wash and wax service</p>
+                            <button class="view-work gradient-bg text-white px-4 py-2 rounded-full hover:opacity-90 transition">View Work</button>
                         </div>
                     </div>
+                    
+                    <!-- Gallery Item -->
+                    <div class="gallery-item" data-category="interior" data-images='[
+                        "https://images.unsplash.com/photo-1601362840469-51e4d8d58785?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80",
+                        "https://images.unsplash.com/photo-1507136566006-cfc505b114fc?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80",
+                        "https://images.unsplash.com/photo-1603386329225-868f9b1ee6c9?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80"
+                    ]' data-description="Complete interior detailing of a luxury SUV. Includes deep upholstery cleaning, leather treatment, and total sanitization.">
+                        <img src="img/2.png" alt="SUV Interior Detailing" class="w-full h-64 object-cover rounded-lg shadow-md cursor-pointer">
+                        <div class="p-4">
+                            <h3 class="font-semibold mb-2">SUV Interior Renovation</h3>
+                            <p class="text-sm text-gray-600 mb-4">Premium interior detailing</p>
+                            <button class="view-work gradient-bg text-white px-4 py-2 rounded-full hover:opacity-90 transition">View Work</button>
+                        </div>
+                    </div>
+                    
+                    <!-- Gallery Item -->
+                    <div class="gallery-item" data-category="paint" data-images='[
+                        "https://images.unsplash.com/photo-1619642751034-765dfdf7c58e?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80",
+                        "https://images.unsplash.com/photo-1618843479313-40f8afb4b4d8?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80",
+                        "https://images.unsplash.com/photo-1612825173281-9a193378527e?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80"
+                    ]' data-description="Paint correction on a Porsche 911. Removal of deep scratches, polishing, and application of high-end wax.">
+                        <img src="img/3.png" alt="Porsche Paint Correction" class="w-full h-64 object-cover rounded-lg shadow-md cursor-pointer">
+                        <div class="p-4">
+                            <h3 class="font-semibold mb-2">Porsche 911 Restoration</h3>
+                            <p class="text-sm text-gray-600 mb-4">Professional paint correction</p>
+                            <button class="view-work gradient-bg text-white px-4 py-2 rounded-full hover:opacity-90 transition">View Work</button>
+                        </div>
+                    </div>
+                    
+                    <!-- Gallery Item -->
+                    <div class="gallery-item" data-category="ceramic" data-images='[
+                        "https://images.unsplash.com/photo-1618843479313-40f8afb4b4d8?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80",
+                        "https://images.unsplash.com/photo-1612825173281-9a193378527e?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80",
+                        "https://images.unsplash.com/photo-1605618313023-d810c2b49e32?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80"
+                    ]' data-description="Application of ceramic coating on a Tesla Model S. Long-lasting protection against the elements and exceptional shine.">
+                        <img src="img/4.png" alt="Tesla Ceramic Coating" class="w-full h-64 object-cover rounded-lg shadow-md cursor-pointer">
+                        <div class="p-4">
+                            <h3 class="font-semibold mb-2">Tesla Ceramic Protection</h3>
+                            <p class="text-sm text-gray-600 mb-4">High-end ceramic coating</p>
+                            <button class="view-work gradient-bg text-white px-4 py-2 rounded-full hover:opacity-90 transition">View Work</button>
+                        </div>
+                    </div>
                 </div>
             </div>
         </section>
+        
+        <!-- Banner Publicitario -->
+<section class="ad-banner">
+    <div class="container mx-auto px-4">
+        <div class="ad-banner-content">
+            <img src="img/oferta.png" alt="Ceramic coating being applied to a car" class="ad-banner-image">
+            <div class="ad-banner-text">
+                <h2 class="text-3xl font-bold mb-4">Limited Time Offer!</h2>
+                <p class="mb-4">Get 15% off on our Ceramic Coating package. Protect your car's paint for years to come!</p>
+                <a href="#contact" class="gradient-bg text-white px-6 py-2 rounded-full hover:opacity-90 transition">Book Now</a>
+            </div>
+        </div>
+    </div>
+</section>
+
+        <!-- Instagram Reels Section with Fixed Scroll -->
+        <section id="instagram-reels" class="py-16 bg-white">
+            <div class="container mx-auto px-4">
+                <h2 class="text-3xl font-bold mb-8 text-center text-primary-color" data-aos="fade-up">Our Instagram Reels</h2>
+                <div class="instagram-container">
+                    <div class="flex space-x-4">
+                        <!-- Instagram Reel Cards -->
+                        <div class="flex-none w-80">
+                            <iframe src="https://www.instagram.com/reel/C4uNzIALi1U/embed" class="w-full h-[600px] rounded-lg shadow-lg" frameborder="0" scrolling="no" allowtransparency="true"></iframe>
+                        </div>
+                        <div class="flex-none w-80">
+                            <iframe src="https://www.instagram.com/reel/CzcrNrZrS6h/embed" class="w-full h-[600px] rounded-lg shadow-lg" frameborder="0" scrolling="no" allowtransparency="true"></iframe>
+                        </div>
+                        <div class="flex-none w-80">
+                            <iframe src="https://www.instagram.com/reel/Cym73xtrdKw/embed" class="w-full h-[600px] rounded-lg shadow-lg" frameborder="0" scrolling="no" allowtransparency="true"></iframe>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- YouTube Video Section -->
+        <section id="youtube-video" class="py-16 bg-gray-100">
+            <div class="container mx-auto px-4">
+                <h2 class="text-3xl font-bold mb-8 text-center text-primary-color" data-aos="fade-up">Our YouTube Channel</h2>
+                <div class="aspect-w-16 aspect-h-9">
+                    <iframe src="https://www.youtube.com/embed/VIDEO_ID" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen class="w-full h-full"></iframe>
+                </div>
+            </div>
+        </section> 
 
         <!-- Testimonials Section -->
-        <section id="testimonials" class="py-16 md:py-20 bg-black" x-data="{ activeTestimonial: 0 }">
+        <section id="testimonials" class="py-16 bg-gray-100 overflow-hidden">
             <div class="container mx-auto px-4">
-                <h2 class="text-2xl md:text-3xl font-bold mb-8 md:mb-12 text-center fade-in">Lo que Dicen Nuestros Clientes</h2>
-                <div class="relative fade-in">
-                    <div class="overflow-hidden">
-                        <div class="flex transition-transform duration-300 ease-in-out" :style="{ transform: `translateX(-${activeTestimonial * 100}%)` }">
-                            <div class="w-full flex-shrink-0 px-4">
-                                <div class="bg-white bg-opacity-10 p-6 rounded-lg shadow-lg">
-                                    <div class="flex items-center mb-4">
-                                        <img src="https://i.pravatar.cc/60?img=1" alt="Usuario" class="w-12 h-12 rounded-full mr-4">
-                                        <div>
-                                            <h4 class="font-bold">Juan Pérez</h4>
-                                            <div class="flex">
-                                                <i class="fas fa-star text-yellow-400"></i>
-                                                <i class="fas fa-star text-yellow-400"></i>
-                                                <i class="fas fa-star text-yellow-400"></i>
-                                                <i class="fas fa-star text-yellow-400"></i>
-                                                <i class="fas fa-star text-yellow-400"></i>
-                                            </div>
+                <h2 class="text-3xl font-bold mb-8 text-center text-primary-color" data-aos="fade-up">What Our Clients Say</h2>
+                <div class="relative">
+                    <div class="testimonials-auto-scroll flex">
+                        <!-- Testimonial Cards -->
+                        <div class="flex-none w-96 p-4">
+                            <div class="bg-white p-6 rounded-lg shadow-md">
+                                <div class="flex items-center mb-4">
+                                    <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80" alt="Client" class="w-12 h-12 rounded-full mr-4 object-cover">
+                                    <div>
+                                        <h3 class="font-semibold">Sarah Johnson</h3>
+                                        <div class="flex text-yellow-400">
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
                                         </div>
                                     </div>
-                                    <p class="text-sm md:text-base">"Servicio excepcional! Mi auto luce como nuevo. La atención al detalle es incomparable."</p>
                                 </div>
-                            </div>
-                            <div class="w-full flex-shrink-0 px-4">
-                                <div class="bg-white bg-opacity-10 p-6 rounded-lg shadow-lg">
-                                    <div class="flex items-center mb-4">
-                                        <img src="https://i.pravatar.cc/60?img=2" alt="Usuario" class="w-12 h-12 rounded-full mr-4">
-                                        <div>
-                                            <h4 class="font-bold">María González</h4>
-                                            <div class="flex">
-                                                <i class="fas fa-star text-yellow-400"></i>
-                                                <i class="fas fa-star text-yellow-400"></i>
-                                                <i class="fas fa-star text-yellow-400"></i>
-                                                <i class="fas fa-star text-yellow-400"></i>
-                                                <i class="fas fa-star text-yellow-400"></i>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <p class="text-sm md:text-base">"Profesionales, puntuales y resultados perfectos cada vez. ¡Altamente recomendados!"</p>
-                                </div>
-                            </div>
-                            <div class="w-full flex-shrink-0 px-4">
-                                <div class="bg-white bg-opacity-10 p-6 rounded-lg shadow-lg">
-                                    <div class="flex items-center mb-4">
-                                        <img src="https://i.pravatar.cc/60?img=3" alt="Usuario" class="w-12 h-12 rounded-full mr-4">
-                                        <div>
-                                            <h4 class="font-bold">Carlos Rodríguez</h4>
-                                            <div class="flex">
-                                                <i class="fas fa-star text-yellow-400"></i>
-                                                <i class="fas fa-star text-yellow-400"></i>
-                                                <i class="fas fa-star text-yellow-400"></i>
-                                                <i class="fas fa-star text-yellow-400"></i>
-                                                <i class="fas fa-star text-yellow-400"></i>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <p class="text-sm md:text-base">"El encerado cerámico que aplicaron ha mantenido mi auto luciendo increíble por meses. ¡Gran inversión!"</p>
-                                </div>
+                                <p>"Exceptional service. My car looked like new after their detailing. Highly recommended!"</p>
                             </div>
                         </div>
+                        <div class="flex-none w-96 p-4">
+                            <div class="bg-white p-6 rounded-lg shadow-md">
+                                <div class="flex items-center mb-4">
+                                    <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80" alt="Client" class="w-12 h-12 rounded-full mr-4 object-cover">
+                                    <div>
+                                        <h3 class="font-semibold">Michael Brown</h3>
+                                        <div class="flex text-yellow-400">
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                                <p>"The ceramic coating they applied is amazing. My car still looks brand new after months!"</p>
+                            </div>
+                        </div>
+                        <div class="flex-none w-96 p-4">
+                            <div class="bg-white p-6 rounded-lg shadow-md">
+                                <div class="flex items-center mb-4">
+                                    <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80" alt="Client" class="w-12 h-12 rounded-full mr-4 object-cover">
+                                    <div>
+                                        <h3 class="font-semibold">Emily Davis</h3>
+                                        <div class="flex text-yellow-400">
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                                <p>"Incredible attention to detail. They truly care about your vehicle and it shows in their work."</p>
+                            </div>
+                        </div>
+                        <!-- Repeat testimonials for continuous scroll effect -->
                     </div>
-<button @click="activeTestimonial = (activeTestimonial - 1 + 3) % 3" class="absolute left-0 top-1/2 transform -translate-y-1/2 bg-white text-black rounded-full p-2 focus:outline-none">
-                        <i class="fas fa-chevron-left"></i>
-                    </button>
-                    <button @click="activeTestimonial = (activeTestimonial + 1) % 3" class="absolute right-0 top-1/2 transform -translate-y-1/2 bg-white text-black rounded-full p-2 focus:outline-none">
-                        <i class="fas fa-chevron-right"></i>
-                    </button>
                 </div>
             </div>
         </section>
 
-        <!-- FAQ Section -->
-        <section id="faq" class="py-16 md:py-20 bg-gradient-to-b from-gray-gradient-start to-gray-gradient-end">
+        <!-- FAQs Section -->
+        <section id="faqs" class="py-16 bg-white">
             <div class="container mx-auto px-4">
-                <h2 class="text-2xl md:text-3xl font-bold mb-8 md:mb-12 text-center fade-in">Preguntas Frecuentes</h2>
-                <div class="space-y-4 fade-in" x-data="{ activeAccordion: null }">
-                    <div class="border border-gray-700 rounded-lg">
-                        <button @click="activeAccordion = activeAccordion === 1 ? null : 1" class="flex justify-between items-center w-full p-4 focus:outline-none">
-                            <span class="font-medium text-left text-sm md:text-base">¿Qué es el detallado automotriz?</span>
-                            <i :class="{'transform rotate-180': activeAccordion === 1}" class="fas fa-chevron-down transition-transform"></i>
-                        </button>
-                        <div x-show="activeAccordion === 1" class="p-4 border-t border-gray-700">
-                            <p class="text-sm md:text-base">El detallado automotriz es un proceso minucioso de limpieza, restauración y acabado de un vehículo para llevarlo a su mejor condición estética posible.</p>
+                <h2 class="text-3xl font-bold mb-8 text-center text-primary-color" data-aos="fade-up">Frequently Asked Questions</h2>
+                <div class="max-w-3xl mx-auto">
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            <span>How long does a full detailing service take?</span>
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="faq-answer">
+                            <p>A full detailing service typically takes between 4-8 hours, depending on the size of the vehicle and the level of detailing required. For more extensive services like paint correction or ceramic coating, it may take longer.</p>
                         </div>
                     </div>
-                    <div class="border border-gray-700 rounded-lg">
-                        <button @click="activeAccordion = activeAccordion === 2 ? null : 2" class="flex justify-between items-center w-full p-4 focus:outline-none">
-                            <span class="font-medium text-left text-sm md:text-base">¿Cuánto tiempo toma un servicio de detallado?</span>
-                            <i :class="{'transform rotate-180': activeAccordion === 2}" class="fas fa-chevron-down transition-transform"></i>
-                        </button>
-                        <div x-show="activeAccordion === 2" class="p-4 border-t border-gray-700">
-                            <p class="text-sm md:text-base">La duración del servicio puede variar dependiendo del paquete y el estado del vehículo, pero generalmente oscila entre 2 y 6 horas.</p>
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            <span>How often should I get my car detailed?</span>
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="faq-answer">
+                            <p>We recommend getting your car detailed every 4-6 months to maintain its appearance and protect the paint. However, this can vary based on your driving habits, environment, and how well you maintain your vehicle between detailing sessions.</p>
                         </div>
                     </div>
-                    <div class="border border-gray-700 rounded-lg">
-                        <button @click="activeAccordion = activeAccordion === 3 ? null : 3" class="flex justify-between items-center w-full p-4 focus:outline-none">
-                            <span class="font-medium text-left text-sm md:text-base">¿Qué áreas atienden?</span>
-                            <i :class="{'transform rotate-180': activeAccordion === 3}" class="fas fa-chevron-down transition-transform"></i>
-                        </button>
-                        <div x-show="activeAccordion === 3" class="p-4 border-t border-gray-700">
-                            <p class="text-sm md:text-base">Atendemos en toda el área de Puebla y sus alrededores. Contáctanos para verificar si llegamos a tu ubicación específica.</p>
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            <span>What's the difference between waxing and ceramic coating?</span>
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="faq-answer">
+                            <p>Waxing provides a temporary layer of protection that typically lasts 1-3 months. Ceramic coating, on the other hand, bonds with the paint at a molecular level, offering superior protection against UV rays, chemicals, and minor scratches for 2-5 years.</p>
                         </div>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- Promotional Banner -->
-        <section class="py-16 md:py-20 bg-black">
+        <!-- Contact Section -->
+        <section id="contact" class="py-16 bg-gray-100">
             <div class="container mx-auto px-4">
-                <div class="bg-blue-600 text-white py-8 px-4 text-center rounded-lg relative overflow-hidden">
-                    <img src="/placeholder.svg?height=400&width=1200" alt="Fondo del Banner Promocional" class="absolute inset-0 w-full h-full object-cover mix-blend-overlay">
-                    <div class="relative z-10">
-                        <h2 class="text-2xl md:text-3xl font-bold mb-4">🎊 Oferta Especial de Apertura 🎊</h2>
-                        <p class="text-lg mb-4">¡30% de descuento en tu primer servicio de detallado!</p>
-                        <p class="text-sm mb-6">Usa el código: BIENVENIDO30 al reservar. Válido hasta [Fecha Final].</p>
-                        <a href="#contact" class="bg-white text-blue-600 px-6 py-2 rounded-full hover:bg-gray-200 transition">Reserva Ahora</a>
+                <h2 class="text-3xl font-bold mb-8 text-center text-primary-color" data-aos="fade-up">Contact Us</h2>
+                <div class="flex flex-wrap -mx-4">
+                    <div class="w-full md:w-1/2 px-4 mb-8 md:mb-0">
+                        <form id="contact-form" class="space-y-4" action="https://formspree.io/f/mnnqvvqb" method="POST">
+                            <div>
+                                <label for="name" class="block text-sm font-medium text-gray-700 mb-1">Name</label>
+                                <input type="text" id="name" name="name" class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary-color" required>
+                            </div>
+                            <div>
+                                <label for="email" class="block text-sm font-medium text-gray-700 mb-1">Email</label>
+                                <input type="email" id="email" name="email" class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary-color" required>
+                            </div>
+                            <div>
+                                <label for="message" class="block text-sm font-medium text-gray-700 mb-1">Message</label>
+                                <textarea id="message" name="message" rows="4" class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary-color" required></textarea>
+                            </div>
+                            <div>
+                                <button type="submit" class="w-full gradient-bg text-white px-4 py-2 rounded-full hover:opacity-90 transition">Send Message</button>
+                            </div>
+                        </form>
                     </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Contact Section with Map -->
-        <section id="contact" class="py-16 md:py-20 bg-black">
-            <div class="container mx-auto px-4">
-                <h2 class="text-2xl md:text-3xl font-bold mb-8 md:mb-12 text-center fade-in">Contáctanos</h2>
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-8 fade-in">
-                    <form class="space-y-4" action="https://formspree.io/f/your-formspree-endpoint" method="POST">
-                        <div>
-                            <label for="name" class="block mb-2 text-sm md:text-base">Nombre</label>
-                            <input type="text" id="name" name="name" class="w-full px-3 py-2 bg-white bg-opacity-10 rounded-md focus:outline-none focus:ring-2 focus:ring-white text-sm md:text-base" required>
+                    <div class="w-full md:w-1/2 px-4">
+                        <div class="h-64 md:h-full rounded-lg overflow-hidden">
+                            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2918.893339431348!2d-81.77329668453958!3d42.95419997915245!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x882f0b7a75dd2d0f%3A0x5037b28c7231d90!2sWatford%2C%20ON%2C%20Canada!5e0!3m2!1sen!2sus!4v1619195841760!5m2!1sen!2sus" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
                         </div>
-                        <div>
-                            <label for="email" class="block mb-2 text-sm md:text-base">Correo Electrónico</label>
-                            <input type="email" id="email" name="email" class="w-full px-3 py-2 bg-white bg-opacity-10 rounded-md focus:outline-none focus:ring-2 focus:ring-white text-sm md:text-base" required>
-                        </div>
-                        <div>
-                            <label for="message" class="block mb-2 text-sm md:text-base">Mensaje</label>
-                            <textarea id="message" name="message" rows="4" class="w-full px-3 py-2 bg-white bg-opacity-10 rounded-md focus:outline-none focus:ring-2 focus:ring-white text-sm md:text-base" required></textarea>
-                        </div>
-                        <button type="submit" class="bg-white text-black px-6 py-2 rounded-full hover:bg-gray-200 transition text-sm md:text-base">Enviar Mensaje</button>
-                    </form>
-                    <div class="h-64 md:h-auto">
-                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3771.4454144853816!2d-98.23319138255615!3d19.05292010000001!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x85cfc0d11d0a9c9d%3A0x5e8f3d3b1e5b1d1a!2sBlvd.%20Municipio%20Libre%201310%2C%20Universidades%2C%2072589%20Puebla%2C%20Pue.!5e0!3m2!1ses-419!2smx!4v1637183211111!5m2!1ses-419!2smx" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
                     </div>
                 </div>
             </div>
         </section>
     </main>
 
-    <footer class="bg-gray-900 py-12">
-        <div class="container mx-auto px-4">
-            <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
-                <div class="text-center md:text-left">
-                    <img src="img/logo.png" alt="One Car Detailing Logo" class="h-12 w-auto mx-auto md:mx-0 mb-4">
-                    <p class="text-sm">Servicios de detallado automotriz de lujo en Puebla</p>
-                </div>
-                <div class="text-center md:text-left">
-                    <h4 class="text-lg font-semibold mb-4">Enlaces Rápidos</h4>
-                    <ul class="space-y-2">
-                        <li><a href="#about" class="hover:text-gray-300 transition text-sm">Sobre Nosotros</a></li>
-                        <li><a href="#services" class="hover:text-gray-300 transition text-sm">Servicios</a></li>
-                        <li><a href="#gallery" class="hover:text-gray-300 transition text-sm">Galería</a></li>
-                        <li><a href="#testimonials" class="hover:text-gray-300 transition text-sm">Testimonios</a></li>
-                        <li><a href="#faq" class="hover:text-gray-300 transition text-sm">FAQ</a></li>
-                    </ul>
-                </div>
-                <div class="text-center md:text-left">
-                    <h4 class="text-lg font-semibold mb-4">Contáctanos</h4>
-                    <p class="text-sm">Teléfono: +52 220 192 9514</p>
-                    <p class="text-sm">Email: carwashone.puebla@hotmail.com</p>
-                    <p class="text-sm">Dirección: Boulevard Municipio Libre 1310, 72464 Puebla de Zaragoza Pue., México</p>
-                </div>
-                <div class="text-center md:text-left">
-                    <h4 class="text-lg font-semibold mb-4">Síguenos</h4>
-                    <div class="flex justify-center md:justify-start space-x-4">
-                        <a href="#" class="text-white hover:text-gray-300 transition"><i class="fab fa-facebook fa-2x"></i></a>
-                        <a href="#" class="text-white hover:text-gray-300 transition"><i class="fab fa-instagram fa-2x"></i></a>
-                        <a href="#" class="text-white hover:text-gray-300 transition"><i class="fab fa-twitter fa-2x"></i></a>
-                    </div>
+    <!-- Footer -->
+<footer class="gradient-bg text-white py-12 footer-spacing">
+    <div class="container mx-auto px-4">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div class="flex flex-col items-center md:items-start">
+                <img src="img/logo.png" alt="Loyal Mobile Detailing Logo" class="h-24 w-auto mb-4">
+                <p class="text-center md:text-left">Luxury mobile detailing services across Los Angeles, Orange County, and the Inland Empire.</p>
+            </div>
+            <div class="text-center md:text-left">
+                <h3 class="text-xl font-semibold mb-4">Contact</h3>
+                <p>Serving: Los Angeles, OC, and IE</p>
+                <p>Phone: +1 (626) 534-9514</p>
+                <p>Email: loyalmobiledetailingoficial@gmail.com</p>
+                <div class="flex justify-center md:justify-start space-x-4 mt-4">
+                    <a href="#" class="hover:text-secondary-color transition"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" class="hover:text-secondary-color transition"><i class="fab fa-instagram"></i></a>
+                    <a href="#" class="hover:text-secondary-color transition"><i class="fab fa-twitter"></i></a>
                 </div>
             </div>
-            <div class="border-t border-gray-800 pt-8 text-center">
-                <p class="text-sm">&copy; 2024 One Car Detailing. Todos los derechos reservados.</p>
+            <div>
+                <h3 class="text-xl font-semibold mb-4 text-center md:text-left">Newsletter</h3>
+                <form id="newsletter-form" class="flex flex-col space-y-4" action="https://formspree.io/f/mnnqvvqb" method="POST">
+                    <input type="email" name="email" placeholder="Your email" class="px-4 py-2 rounded-full text-gray-800" required>
+                    <button type="submit" class="bg-secondary-color text-primary-color px-4 py-2 rounded-full hover:bg-opacity-90 transition">Subscribe</button>
+                </form>
             </div>
         </div>
-    </footer>
+        <div class="mt-8 text-center">
+            <p>&copy; 2024 Loyal Mobile Detailing. All rights reserved.</p>
+            <p class="mt-2">Powered by Duality Domain</p>
+        </div>
+    </div>
+</footer>
 
-    <!-- WhatsApp Button -->
-    <a href="https://wa.me/522201929514" class="fixed bottom-4 right-4 bg-green-500 text-white rounded-full p-3 hover:bg-green-600 transition-colors z-50">
-        <i class="fab fa-whatsapp fa-2x"></i>
-    </a>
+    <!-- Botón flotante de WhatsApp -->
+<a href="https://wa.me/16265349514" class="floating-btn whatsapp" target="_blank" rel="noopener noreferrer">
+    <i class="fab fa-whatsapp text-white text-3xl"></i>
+</a>
 
-    <script>
-        // Testimonial Slider
-        setInterval(() => {
-            let activeTestimonial = document.querySelector('[x-data]').__x.$data.activeTestimonial;
-            document.querySelector('[x-data]').__x.$data.activeTestimonial = (activeTestimonial + 1) % 3;
-        }, 5000);
+<!-- Botón flotante de Book Now con notificación -->
+<div class="fixed bottom-20 right-5 z-50 flex items-center">
+    <div id="bookNowNotification" class="bg-yellow-400 text-black px-4 py-2 rounded-full mr-2 opacity-0 transition-opacity duration-300 ease-in-out">
+        Book now here!
+    </div>
+    <button id="bookNowBtn" class="floating-btn book-now">
+        <img src="img/logo.png" alt="Book Now" class="w-10 h-10">
+    </button>
+</div>
 
-        // Top Banner Slider - Already handled in x-init
-        // Preloader
-        window.addEventListener('load', () => {
-            setTimeout(() => {
-                document.querySelector('[x-data]').__x.$data.loading = false;
-            }, 2000);
-        });
+    <!-- Modal de reserva -->
+    <div id="bookingModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2 class="text-2xl font-bold mb-4">Book Your Appointment</h2>
+            <form id="booking-form" class="space-y-4" action="https://formspree.io/f/mnnqvvqb" method="POST">
+                <div>
+                    <label for="booking-name" class="block text-sm font-medium text-gray-700 mb-1">Name</label>
+                    <input type="text" id="booking-name" name="name" class="w-full px-3 py-2 border border-gray-300 rounded-md" required>
+                </div>
+                <div>
+                    <label for="booking-email" class="block text-sm font-medium text-gray-700 mb-1">Email</label>
+                    <input type="email" id="booking-email" name="email" class="w-full px-3 py-2 border border-gray-300 rounded-md" required>
+                </div>
+                <div>
+                    <label for="booking-phone" class="block text-sm font-medium text-gray-700 mb-1">Phone</label>
+                    <input type="tel" id="booking-phone" name="phone" class="w-full px-3 py-2 border border-gray-300 rounded-md" required>
+                </div>
+                <div>
+                    <label for="booking-date" class="block text-sm font-medium text-gray-700 mb-1">Preferred Date</label>
+                    <input type="date" id="booking-date" name="date" class="w-full px-3 py-2 border border-gray-300 rounded-md" required>
+                </div>
+                <div>
+                    <label for="booking-service" class="block text-sm font-medium text-gray-700 mb-1">Service</label>
+                    <select id="booking-service" name="service" class="w-full px-3 py-2 border border-gray-300 rounded-md" required>
+                        <option value="">Select a service</option>
+                        <option value="wash">Premium Wash & Wax</option>
+                        <option value="interior">Interior Detailing</option>
+                        <option value="paint">Paint Correction</option>
+                        <option value="ceramic">Ceramic Coating</option>
+                    </select>
+                </div>
+                <div>
+                    <label for="booking-message" class="block text-sm font-medium text-gray-700 mb-1">Additional Information</label>
+                    <textarea id="booking-message" name="message" rows="3" class="w-full px-3 py-2 border border-gray-300 rounded-md"></textarea>
+                </div>
+                <button type="submit" class="w-full gradient-bg text-white px-4 py-2 rounded-full hover:opacity-90 transition">Book Now</button>
+            </form>
+        </div>
+    </div>
 
-        // Fade-in effect
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('appear');
-                }
-            });
-        }, {
-            threshold: 0.1
-        });
-
-        document.querySelectorAll('.fade-in').forEach(element => {
-            observer.observe(element);
-        });
-    </script>
+    <script src="script.js"></script>
 </body>
 </html>
-

@@ -1,212 +1,284 @@
-document.addEventListener('DOMContentLoaded', () => {
-    const menuToggle = document.getElementById('menu-toggle');
-    const mobileMenu = document.getElementById('mobile-menu');
-    const header = document.getElementById('main-header');
-    const servicesGrid = document.getElementById('servicesGrid');
-    const galleryGrid = document.getElementById('galleryGrid');
-    const filterButtons = document.querySelectorAll('.filter-btn');
-    const contactForm = document.getElementById('contactForm');
-    const preloader = document.getElementById('preloader');
-    const heroSlider = document.getElementById('hero-slider');
-    const adSlider = document.getElementById('adSlider');
-    const topBannerSlider = document.querySelector('.top-banner-slider');
-    let topBannerCurrentSlide = 0;
-
+// script.js
+document.addEventListener('DOMContentLoaded', function() {
     // Preloader
-    window.addEventListener('load', () => {
+    const preloader = document.querySelector('.preloader');
+    if (preloader) {
         setTimeout(() => {
-            preloader.style.opacity = '0';
-            preloader.style.transition = 'opacity 0.5s ease';
-            setTimeout(() => {
-                preloader.style.display = 'none';
-            }, 500);
-        }, 2000);
-    });
+            preloader.style.display = 'none';
+        }, 3000);
+    }
 
-    // Mobile menu toggle
-    menuToggle.addEventListener('click', () => {
+    // Mobile Menu Toggle
+    const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+    const closeMobileMenu = document.getElementById('closeMobileMenu');
+    const mobileMenu = document.getElementById('mobileMenu');
+
+    mobileMenuBtn.addEventListener('click', () => {
         mobileMenu.classList.toggle('hidden');
     });
 
-    // Smooth scrolling for navigation links
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-        anchor.addEventListener('click', function (e) {
-            e.preventDefault();
-            mobileMenu.classList.add('hidden');
-            document.querySelector(this.getAttribute('href')).scrollIntoView({
-                behavior: 'smooth'
+    closeMobileMenu.addEventListener('click', () => {
+        mobileMenu.classList.add('hidden');
+    });
+
+    // Top Banner Rotation
+    const banner = document.getElementById('top-banner');
+    const bannerContent = banner.querySelector('.banner-content');
+    const bannerItems = banner.querySelectorAll('.banner-item');
+    let currentBanner = 0;
+
+    function rotateBanner() {
+        currentBanner = (currentBanner + 1) % bannerItems.length;
+        bannerContent.style.transform = `translateX(-${currentBanner * 100}%)`;
+    }
+
+    setInterval(rotateBanner, 5000);
+
+    // About Section Swiper
+    new Swiper('.about-swiper', {
+        slidesPerView: 1,
+        spaceBetween: 20,
+        loop: true,
+        autoplay: {
+            delay: 5000,
+        },
+        breakpoints: {
+            640: {
+                slidesPerView: 2,
+            },
+            1024: {
+                slidesPerView: 3,
+            },
+        },
+    });
+
+    // Service Modal
+    const serviceModal = document.createElement('div');
+    serviceModal.className = 'fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 hidden';
+    serviceModal.innerHTML = `
+        <div class="bg-white p-8 rounded-lg max-w-md w-full relative">
+            <button id="closeModal" class="absolute top-2 right-2 text-gray-600 hover:text-gray-800 text-2xl" aria-label="Close modal">&times;</button>
+            <h2 id="modalTitle" class="text-2xl font-bold mb-4"></h2>
+            <p id="modalDescription" class="mb-4"></p>
+            <ul id="modalFeatures" class="list-disc pl-5 mb-4"></ul>
+            <p id="modalPrice" class="font-bold mb-4"></p>
+        </div>
+    `;
+    document.body.appendChild(serviceModal);
+
+    const modalTitle = document.getElementById('modalTitle');
+    const modalDescription = document.getElementById('modalDescription');
+    const modalFeatures = document.getElementById('modalFeatures');
+    const modalPrice = document.getElementById('modalPrice');
+    const closeModal = document.getElementById('closeModal');
+    const viewServiceButtons = document.querySelectorAll('.view-service');
+
+    const serviceDetails = {
+        wash: {
+            title: "Premium Wash & Wax",
+            description: "Our Premium Wash & Wax service is designed to give your vehicle a showroom-quality finish.",
+            features: [
+                "Thorough exterior wash",
+                "Clay bar treatment",
+                "High-quality wax application",
+                "Tire and rim cleaning",
+                "Interior vacuum and wipe-down"
+            ],
+            price: "From $49.99"
+        },
+        interior: {
+            title: "Interior Detailing",
+            description: "Our Interior Detailing service deep cleans and refreshes your vehicle's interior.",
+            features: [
+                "Thorough vacuuming",
+                "Steam cleaning of upholstery",
+                "Leather treatment (if applicable)",
+                "Dashboard and console cleaning",
+                "Window and mirror cleaning"
+            ],
+            price: "From $89.99"
+        },
+        paint: {
+            title: "Paint Correction",
+            description: "Our Paint Correction service removes imperfections and restores your vehicle's paint to its original glory.",
+            features: [
+                "Multi-stage polishing process",
+                "Swirl and scratch removal",
+                "Paint depth measurement",
+                "High-gloss finish",
+                "Protective sealant application"
+            ],
+            price: "From $199.99"
+        },
+        ceramic: {
+            title: "Ceramic Coating",
+            description: "Our Ceramic Coating service provides long-lasting protection and an unmatched shine for your vehicle.",
+            features: [
+                "Paint decontamination",
+                "Single-stage paint correction",
+                "Professional-grade ceramic coating application",
+                "Hydrophobic properties",
+                "UV protection"
+            ],
+            price: "From $299.99"
+        }
+    };
+
+    viewServiceButtons.forEach(button => {
+        button.addEventListener('click', () => {
+            const service = button.getAttribute('data-service');
+            const details = serviceDetails[service];
+            modalTitle.textContent = details.title;
+            modalDescription.textContent = details.description;
+            modalFeatures.innerHTML = details.features.map(feature => `<li>${feature}</li>`).join('');
+            modalPrice.textContent = details.price;
+            serviceModal.classList.remove('hidden');
+        });
+    });
+
+    closeModal.addEventListener('click', () => {
+        serviceModal.classList.add('hidden');
+    });
+
+    // Gallery Filter
+    const filterButtons = document.querySelectorAll('.filter-btn');
+    const galleryItems = document.querySelectorAll('.gallery-item');
+
+    filterButtons.forEach(button => {
+        button.addEventListener('click', () => {
+            const filter = button.getAttribute('data-filter');
+            
+            filterButtons.forEach(btn => btn.classList.remove('active'));
+            button.classList.add('active');
+
+            galleryItems.forEach(item => {
+                if (filter === 'all' || item.getAttribute('data-category') === filter) {
+                    item.style.display = 'block';
+                } else {
+                    item.style.display = 'none';
+                }
             });
         });
     });
 
-    // Header scroll effect
-    window.addEventListener('scroll', () => {
-        if (window.scrollY > 0) {
-            header.classList.add('shadow-md', 'bg-opacity-90');
-        } else {
-            header.classList.remove('shadow-md', 'bg-opacity-90');
-        }
-    });
-
-    // Services data
-    const services = [
-        {
-            title: "Detallado Interior",
-            description: "Limpieza profunda y desinfección del interior de tu vehículo para una sensación fresca y como nueva.",
-            image: "https://images.unsplash.com/photo-1607860108855-64acf2078ed9?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1471&q=80"
-        },
-        {
-            title: "Detallado Exterior",
-            description: "Restauramos el brillo de tu auto con nuestro servicio de detallado exterior completo.",
-            image: "https://images.unsplash.com/photo-1601362840469-51e4d8d58785?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80"
-        },
-        {
-            title: "Encerado Cerámico",
-            description: "Protege la pintura de tu vehículo con nuestro servicio de encerado cerámico de larga duración.",
-            image: "https://images.unsplash.com/photo-1619642751034-765dfdf7c58e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1074&q=80"
-        },
-        {
-            title: "Corrección de Pintura",
-            description: "Eliminamos rayones y marcas de remolino para restaurar el acabado perfecto de tu auto.",
-            image: "https://images.unsplash.com/photo-1612570158821-4503900049b0?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1074&q=80"
-        }
-    ];
-
-    // Populate services grid
-    services.forEach(service => {
-        const serviceCard = document.createElement('div');
-        serviceCard.className = 'bg-white rounded-lg shadow-md overflow-hidden transition-all duration-300 hover:shadow-xl hover-scale';
-        serviceCard.innerHTML = `
-            <img src="${service.image}" alt="${service.title}" class="w-full h-48 object-cover">
-            <div class="p-4">
-                <h3 class="text-xl font-semibold mb-2">${service.title}</h3>
-                <p class="text-gray-600 mb-4">${service.description}</p>
-                <a href="https://wa.me/522201929514?text=Estoy%20interesado%20en%20su%20servicio%20de%20${encodeURIComponent(service.title)}" class="inline-block bg-gray-800 text-white px-4 py-2 rounded hover:bg-gray-700 transition-colors duration-300" target="_blank" rel="noopener noreferrer">Reservar Ahora</a>
+    // Gallery Modal
+    const galleryModal = document.createElement('div');
+    galleryModal.className = 'fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 hidden';
+    galleryModal.innerHTML = `
+        <div class="bg-white p-8 rounded-lg max-w-4xl w-full relative">
+            <button id="closeGalleryModal" class="absolute top-2 right-2 text-gray-600 hover:text-gray-800 text-2xl" aria-label="Close gallery modal">&times;</button>
+            <h2 id="galleryModalTitle" class="text-2xl font-bold mb-4"></h2>
+            <div id="galleryModalImages" class="swiper gallery-swiper mb-4">
+                <div class="swiper-wrapper"></div>
+                <div class="swiper-pagination"></div>
+                <div class="swiper-button-prev"></div>
+                <div class="swiper-button-next"></div>
             </div>
-        `;
-        servicesGrid.appendChild(serviceCard);
-    });
-
-    // Gallery data
-    const galleryItems = [
-        { image: "https://images.unsplash.com/photo-1605515298946-d062f2e9da53?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80", category: "interior" },
-        { image: "https://images.unsplash.com/photo-1600964373031-f0b65565f354?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80", category: "exterior" },
-        { image: "https://images.unsplash.com/photo-1619642751034-765dfdf7c58e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1074&q=80", category: "ceramic" },
-        { image: "https://images.unsplash.com/photo-1612570158821-4503900049b0?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1074&q=80", category: "paint" },
-        { image: "https://images.unsplash.com/photo-1607860108855-64acf2078ed9?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1471&q=80", category: "interior" },
-        { image: "https://images.unsplash.com/photo-1601362840469-51e4d8d58785?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80", category: "exterior" }
-    ];
-
-    // Populate gallery grid
-    function populateGallery(items) {
-        galleryGrid.innerHTML = '';
-        items.forEach(item => {
-            const galleryItem = document.createElement('div');
-            galleryItem.className = 'relative overflow-hidden rounded-lg shadow-md transition-all duration-300 hover:shadow-xl hover-scale';
-            galleryItem.innerHTML = `
-                <img src="${item.image}" alt="Elemento de galería" class="w-full h-64 object-cover">
-                <div class="absolute inset-0 bg-black bg-opacity-50 flex items-center justify-center opacity-0 transition-opacity duration-300 hover:opacity-100">
-                    <span class="text-white text-lg font-semibold">Ver</span>
-                </div>
-            `;
-            galleryGrid.appendChild(galleryItem);
-        });
-    }
-
-    populateGallery(galleryItems);
-
-    // Gallery filter functionality
-    filterButtons.forEach(button => {
-        button.addEventListener('click', () => {
-            const filter = button.textContent.toLowerCase();
-            filterButtons.forEach(btn => btn.classList.remove('active', 'bg-gray-800', 'text-white'));
-            button.classList.add('active', 'bg-gray-800', 'text-white');
-
-            const filteredItems = filter === 'todos' 
-                ? galleryItems 
-                : galleryItems.filter(item => item.category === filter);
-            
-            populateGallery(filteredItems);
-        });
-    });
-
-    // Contact form submission
-    contactForm.addEventListener('submit', (e) => {
-        e.preventDefault();
-        // Aquí normalmente enviarías los datos del formulario a un servidor
-        alert('Gracias por tu mensaje. Nos pondremos en contacto contigo pronto.');
-        contactForm.reset();
-    });
-
-    // Hero slider
-    const heroImages = [
-        "https://images.unsplash.com/photo-1600964373031-f0b65565f354?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80",
-        "https://images.unsplash.com/photo-1605515298946-d062f2e9da53?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80",
-        "https://images.unsplash.com/photo-1619642751034-765dfdf7c58e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1074&q=80"
-    ];
-
-    let currentHeroIndex = 0;
-
-    function updateHeroSlider() {
-        heroSlider.style.backgroundImage = `url('${heroImages[currentHeroIndex]}')`;
-        heroSlider.style.backgroundSize = 'cover';
-        heroSlider.style.backgroundPosition = 'center';
-        currentHeroIndex = (currentHeroIndex + 1) % heroImages.length;
-    }
-
-    updateHeroSlider();
-    setInterval(updateHeroSlider, 5000);
-
-    // Ad banner slider
-    const ads = [
-        { image: "https://images.unsplash.com/photo-1605515298946-d062f2e9da53?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80", title: "Oferta Especial", description: "20% de descuento en detallado completo" },
-        { image: "https://images.unsplash.com/photo-1600964373031-f0b65565f354?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80", title: "Nuevo Servicio", description: "Encerado cerámico ahora disponible" },
-        { image: "https://images.unsplash.com/photo-1619642751034-765dfdf7c58e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1074&q=80", title: "Paquete de Temporada", description: "Detallado interior + exterior por $1999" }
-    ];
-
-    let currentAdIndex = 0;
-
-    function updateAdSlider() {
-        currentAdIndex = (currentAdIndex + 1) % ads.length;
-        adSlider.style.transform = `translateX(-${currentAdIndex * 100}%)`;
-    }
-
-    adSlider.innerHTML = ads.map(ad => `
-        <div class="flex-shrink-0 w-full">
-            <div class="flex items-center bg-white rounded-lg shadow-md overflow-hidden transition-all duration-500 hover:shadow-xl">
-                <img src="${ad.image}" alt="${ad.title}" class="w-1/2 h-64 object-cover">
-                <div class="w-1/2 p-6">
-                    <h3 class="text-2xl font-semibold mb-2">${ad.title}</h3>
-                    <p class="text-gray-600 mb-4">${ad.description}</p>
-                    <a href="#contact" class="inline-block bg-gray-800 text-white px-4 py-2 rounded hover:bg-gray-700 transition-colors duration-300">Reservar Ahora</a>
-                </div>
-            </div>
+            <p id="galleryModalDescription" class="mb-4"></p>
         </div>
-    `).join('');
-    adSlider.style.display = 'flex';
-    adSlider.style.transition = 'transform 0.5s ease-in-out';
-updateAdSlider();
-    setInterval(updateAdSlider, 5000);
+    `;
+    document.body.appendChild(galleryModal);
 
-    // Intersection Observer for fade-in effect
-    const fadeElems = document.querySelectorAll('.fade-in');
-    const fadeObserver = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.classList.add('visible');
-            }
+    const galleryModalTitle = document.getElementById('galleryModalTitle');
+    const galleryModalImages = document.getElementById('galleryModalImages');
+    const galleryModalDescription = document.getElementById('galleryModalDescription');
+    const closeGalleryModal = document.getElementById('closeGalleryModal');
+    const viewWorkButtons = document.querySelectorAll('.view-work');
+
+    viewWorkButtons.forEach(button => {
+        button.addEventListener('click', () => {
+            const galleryItem = button.closest('.gallery-item');
+            const images = JSON.parse(galleryItem.getAttribute('data-images'));
+            const description = galleryItem.getAttribute('data-description');
+            const title = galleryItem.querySelector('h3').textContent;
+
+            galleryModalImages.querySelector('.swiper-wrapper').innerHTML = images.map(image => `
+                <div class="swiper-slide">
+                    <img src="${image}" alt="${title}" class="w-full h-auto">
+                </div>
+            `).join('');
+
+            galleryModalTitle.textContent = title;
+            galleryModalDescription.textContent = description;
+            galleryModal.classList.remove('hidden');
+
+            new Swiper('.gallery-swiper', {
+                navigation: {
+                    nextEl: '.swiper-button-next',
+                    prevEl: '.swiper-button-prev',
+                },
+                pagination: {
+                    el: '.swiper-pagination',
+                },
+            });
         });
-    }, { threshold: 0.1 });
-
-    fadeElems.forEach(elem => {
-        fadeObserver.observe(elem);
     });
 
-    function updateTopBannerSlider() {
-        topBannerCurrentSlide = (topBannerCurrentSlide + 1) % 3;
-        topBannerSlider.style.transform = `translateX(-${topBannerCurrentSlide * 100}%)`;
+    closeGalleryModal.addEventListener('click', () => {
+        galleryModal.classList.add('hidden');
+    });
+
+    // FAQ Accordion
+    const faqQuestions = document.querySelectorAll('.faq-question');
+
+    faqQuestions.forEach(question => {
+        question.addEventListener('click', () => {
+            const answer = question.nextElementSibling;
+            const icon = question.querySelector('i');
+
+            answer.classList.toggle('active');
+            icon.classList.toggle('fa-chevron-down');
+            icon.classList.toggle('fa-chevron-up');
+        });
+    });
+
+    // Booking Modal y Notificación
+    const bookNowBtn = document.getElementById('bookNowBtn');
+    const bookingModal = document.getElementById('bookingModal');
+    const closeBookingModal = bookingModal.querySelector('.close');
+    const bookNowNotification = document.getElementById('bookNowNotification');
+
+    let notificationTimeout;
+
+    function showNotification() {
+        bookNowNotification.classList.remove('opacity-0');
+        bookNowNotification.classList.add('opacity-100');
+        
+        clearTimeout(notificationTimeout);
+        notificationTimeout = setTimeout(() => {
+            bookNowNotification.classList.remove('opacity-100');
+            bookNowNotification.classList.add('opacity-0');
+        }, 3000);
     }
 
-    setInterval(updateTopBannerSlider, 5000);
-});
+    function hideNotification() {
+        bookNowNotification.classList.remove('opacity-100');
+        bookNowNotification.classList.add('opacity-0');
+    }
 
+    bookNowBtn.addEventListener('mouseenter', showNotification);
+    bookNowBtn.addEventListener('mouseleave', hideNotification);
+
+    bookNowBtn.addEventListener('click', () => {
+        bookingModal.style.display = 'block';
+        hideNotification();
+    });
+
+    closeBookingModal.addEventListener('click', () => {
+        bookingModal.style.display = 'none';
+    });
+
+    window.addEventListener('click', (event) => {
+        if (event.target == bookingModal) {
+            bookingModal.style.display = 'none';
+        }
+    });
+
+    // Initialize AOS
+    AOS.init({
+        duration: 1000,
+        once: true,
+    });
+
+    console.log('Script loaded and running');
+});
